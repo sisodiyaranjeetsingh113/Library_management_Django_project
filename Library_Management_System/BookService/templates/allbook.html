@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="text-align: center;">    
+    <hr>
+    <table >
+        {% if user.is_superuser %}
+        <button class="btn btn-outline-primary"><a href="/create">Add New Entry</a></button>
+       {% endif %}
+        {%if booklist %}
+        <thead>
+        <tr>
+            <th>Book Id</th>
+            <th>Title</th>
+            
+            <th>Description</th>
+            <th> Action</th>
+        </tr>
+        </thead>
+
+        {%for book in booklist %}
+        <tbody>
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.description}}</td>
+            <td>
+                {% if user.is_superuser %}
+                <button class="btn btn-outline-warning"><a href="/update/{{book.id}}">Update</a></button>
+                <button class="btn btn-outline-danger"><a href="/delete/{{book.id}}">Delete</a></button>
+                {% endif %}
+            </td>
+            
+        </tr>
+    </tbody>
+        {% endfor %}
+        {% else%}
+        <h2>No Records..!!</h2>
+        {% endif %}
+    </table>
+    
+
+</div>
+<hr>
+
+{% endblock %}
