@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'Library_Management_System.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'sqlite3.db', 
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bookdb', 
+	'USER':'root',
+	'PASSWORD':'sisodiya',
+	'HOST':'localhost',
+	'PORT':''
    
     }
 }
